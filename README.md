@@ -1,7 +1,3 @@
-admin : quanghuy    
-user: user
-seller: seller
-pass: IQBOLSHOH
 ## Project Introduction
 
 This project is a PHP-MySQL-based marketplace application that allows users to register as buyers or sellers and interact within the platform. It provides features for managing products, orders, and user accounts.
