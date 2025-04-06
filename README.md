@@ -11,7 +11,7 @@ This project is a PHP-MySQL-based marketplace application that allows users to r
 1. **Install XAMPP**: Download and install [XAMPP](https://www.apachefriends.org/index.html) to set up a local server environment.
 2. **Clone the Repository**: Clone this project into the `htdocs` folder of your XAMPP installation.
     ```bash
-    git clone https://github.com/your-repo/php-mysql-marketplace.git
+    git clone[ https://github.com/your-repo/php-mysql-marketplace.git](https://github.com/huyIT203/websitegame)
     ```
 3. **Start XAMPP**: Open XAMPP and start the Apache and MySQL services.
 4. **Import the Database**:
