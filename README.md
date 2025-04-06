@@ -80,4 +80,9 @@ To configure the database connection, follow these steps:
 4. Save the changes to the `config.php` file.
 5. Ensure the database credentials match the ones you used when setting up the database in `phpMyAdmin`.
 
+## Run the Project on Localhost
+
+To access the project on your local server, open your browser and navigate to the following URL:
+
+[http://localhost/php_websitegame/](http://localhost/php_websitegame/)
 Once configured, the application should be able to connect to the database successfully.
