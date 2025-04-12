@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 admin : quanghuy    
 user: user
 seller: seller
 pass: IQBOLSHOH
+=======
+>>>>>>> ee3cb50251df4c620503b054574d9cd6ba57652a
 ## Project Introduction
 
 This project is a PHP-MySQL-based marketplace application that allows users to register as buyers or sellers and interact within the platform. It provides features for managing products, orders, and user accounts.
@@ -11,6 +14,10 @@ This project is a PHP-MySQL-based marketplace application that allows users to r
 1. **Install XAMPP**: Download and install [XAMPP](https://www.apachefriends.org/index.html) to set up a local server environment.
 2. **Clone the Repository**: Clone this project into the `htdocs` folder of your XAMPP installation.
     ```bash
+<<<<<<< HEAD
+=======
+    git clone[ https://github.com/your-repo/php-mysql-marketplace.git](https://github.com/huyIT203/websitegame)
+>>>>>>> ee3cb50251df4c620503b054574d9cd6ba57652a
     ```
 3. **Start XAMPP**: Open XAMPP and start the Apache and MySQL services.
 4. **Import the Database**:
@@ -83,10 +90,18 @@ To configure the database connection, follow these steps:
 4. Save the changes to the `config.php` file.
 5. Ensure the database credentials match the ones you used when setting up the database in `phpMyAdmin`.
 
+<<<<<<< HEAD
 Once configured, the application should be able to connect to the database successfully.
 
+=======
+>>>>>>> ee3cb50251df4c620503b054574d9cd6ba57652a
 ## Run the Project on Localhost
 
 To access the project on your local server, open your browser and navigate to the following URL:
 
+<<<<<<< HEAD
 [http://localhost/php_websitegame/](http://localhost/php_websitegame/)
+=======
+[http://localhost/php_websitegame/](http://localhost/php_websitegame/)
+Once configured, the application should be able to connect to the database successfully.
+>>>>>>> ee3cb50251df4c620503b054574d9cd6ba57652a
