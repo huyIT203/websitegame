@@ -48,6 +48,15 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="search.php" class="nav-link <?php echo ($Page === 'search') ? 'active' : ''; ?>">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Tìm kiếm
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a onclick="logout()" class="nav-link <?php echo ($Menu === 'logout') ? 'active' : ''; ?>">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Logout</p>

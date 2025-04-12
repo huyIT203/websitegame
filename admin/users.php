@@ -115,6 +115,7 @@
                                 <h3 class="card-title">Users List</h3>
                                 <div class="float-right">
                                     <a href="add_user.php?role=user" class="btn btn-primary">Add User</a>
+                                    <a href="add_admin.php" class="btn btn-danger ml-2">Add Admin</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->

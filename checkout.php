@@ -19,8 +19,8 @@ $price_current_Sum = 0;
     <title>Checkout</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f8f8;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -28,32 +28,51 @@ $price_current_Sum = 0;
 
         .container {
             width: 90%;
-            overflow-x: auto;
+            max-width: 1200px;
             margin: 40px auto;
             background-color: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
             text-align: center;
-            color: #333;
-            margin-bottom: 25px;
+            color: #6c5ce7;
+            margin-bottom: 30px;
             font-size: 2.5em;
-            font-weight: bold;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #6c5ce7;
+            border-radius: 2px;
         }
 
         h3 {
-            color: #333;
+            color: #2d3436;
             font-size: 1.5em;
-            margin-bottom: 15px;
-            text-decoration: underline;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
         }
 
         .user-information,
         .cart-summary {
             margin-bottom: 40px;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .user-information ul {
@@ -64,35 +83,49 @@ $price_current_Sum = 0;
         }
 
         .user-information li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .user-information li:last-child {
+            border-bottom: none;
         }
 
         .user-information li strong {
-            color: #7fad39;
+            color: #6c5ce7;
+            font-weight: 600;
+            display: inline-block;
+            width: 150px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         th,
         td {
-            padding: 15px 20px;
+            padding: 18px 20px;
             text-align: left;
-            border: 1px solid #ddd;
-            font-size: 1.1em;
+            border: none;
+            font-size: 1.05em;
         }
 
         th {
-            background-color: #f1f1f1;
-            color: #7fad39;
-            font-weight: bold;
+            background-color: #6c5ce7;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
 
         tr:hover {
@@ -101,24 +134,32 @@ $price_current_Sum = 0;
         }
 
         .total {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #333;
-            margin-top: 25px;
-            text-align: right;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .total p {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #2d3436;
             margin: 15px 0;
+            text-align: right;
+        }
+
+        .total p:last-child {
+            margin-bottom: 30px;
         }
 
         .total span {
-            color: rgb(255, 51, 0);
+            font-weight: 700;
         }
 
         .price del {
-            color: rgb(255, 0, 0);
-            font-size: 14px;
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-right: 10px;
         }
 
         .price {
@@ -128,110 +169,38 @@ $price_current_Sum = 0;
         }
 
         .price span {
-            color: #7fad39;
-            font-weight: bold;
+            color: #6c5ce7;
+            font-weight: 700;
         }
 
-        .cart-summary {
-            border-top: 2px solid #f1f1f1;
-            padding-top: 20px;
+        .payment-button {
+            background-color: #6c5ce7;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
         }
 
-        del {
-            font-weight: bold;
+        .payment-button:hover {
+            background-color: #5649c0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
-
 
         @media (max-width: 768px) {
             .container {
                 width: 95%;
                 padding: 20px;
             }
-
-            h2 {
-                font-size: 2em;
-            }
-
-            h3 {
-                font-size: 1.2em;
-            }
-
-            table th,
-            table td {
-                font-size: 1em;
-                padding: 10px;
-            }
-
-            .total p {
-                font-size: 1.2em;
-            }
-
-            .user-information ul {
-                font-size: 1em;
-            }
-
-            .price span {
-                font-size: 1em;
-            }
-
-            .price del {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .container {
-                width: 100%;
-                padding: 10px;
-            }
-
-            h2 {
-                font-size: 1.8em;
-            }
-
-            h3 {
-                font-size: 1.1em;
-            }
-
-            .user-information ul {
-                font-size: 0.9em;
-            }
-
-            table th,
-            table td {
-                font-size: 0.9em;
-                padding: 8px;
-            }
-
-            .price span {
-                font-size: 0.9em;
-            }
-
-            .total p {
-                font-size: 1em;
-            }
-
-            .cart-summary {
-                padding-top: 15px;
-            }
-        }
-
-        /* Add to existing styles */
-        .payment-button {
-            background-color: #7fad39;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .payment-button:hover {
-            background-color: #689030;
         }
     </style>
 </head>
@@ -302,8 +271,14 @@ $price_current_Sum = 0;
 
         <div class="total">
             <p>Total (Old Price): <span><del>$<?= number_format($price_old_Sum, 2); ?></del></span></p>
-            <p>Total (Current Price): <span style="color: #7fad39">$<?= number_format($price_current_Sum, 2); ?></span>
+            <p>Total (Current Price): <span style="color: #6c5ce7">$<?= number_format($price_current_Sum, 2); ?></span>
             </p>
+            
+            <div class="shipping-address" style="margin: 25px 0; text-align: left;">
+                <h3 style="color: #2d3436; font-size: 1.2em; margin-bottom: 15px;">Shipping Address</h3>
+                <textarea id="shipping_address" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px; min-height: 100px; font-family: inherit;" placeholder="Enter your shipping address here..."></textarea>
+            </div>
+            
             <button onclick="processPayment()" class="payment-button">Process Payment</button>
         </div>
     </div>
@@ -313,6 +288,9 @@ $price_current_Sum = 0;
     
     <script>
         function processPayment() {
+            // Get shipping address
+            const shippingAddress = document.getElementById('shipping_address').value;
+            
             // Send payment request to process_payment.php
             fetch('process_payment.php', {
                 method: 'POST',
@@ -320,7 +298,8 @@ $price_current_Sum = 0;
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    total: <?php echo $price_current_Sum; ?>
+                    total: <?php echo $price_current_Sum; ?>,
+                    shipping_address: shippingAddress
                 })
             })
             .then(response => response.json())
@@ -330,10 +309,16 @@ $price_current_Sum = 0;
                         title: 'Payment Successful!',
                         text: 'Your order has been processed successfully.',
                         icon: 'success',
-                        confirmButtonText: 'OK'
+                        showCancelButton: true,
+                        confirmButtonColor: '#6c5ce7',
+                        cancelButtonColor: '#7fad39',
+                        confirmButtonText: 'View Order Details',
+                        cancelButtonText: 'Continue Shopping'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = 'index.php';
+                            window.location.href = 'order_detail.php?id=' + data.order_id;
+                        } else {
+                            window.location.href = 'profile.php#orders';
                         }
                     });
                 } else {

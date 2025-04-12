@@ -32,7 +32,14 @@ function countTable($table)
     <div class="humberger__menu__widget">
         <div class="header__top__right__auth">
             <?php if ($_SESSION['loggedin']): ?>
-                <a href="#" onclick="logout()"><i class="fa fa-user"></i>Logout</a>
+                <div class="header__top__right__auth__dropdown">
+                    <a href="#"><i class="fa fa-user"></i> <?= htmlspecialchars($_SESSION['name']); ?> <i class="fa fa-angle-down"></i></a>
+                    <div class="header__top__right__auth__dropdown__content">
+                        <a href="./profile.php"><i class="fa fa-user-circle"></i> Tài khoản</a>
+                        <a href="./profile.php#orders"><i class="fa fa-shopping-basket"></i> Đơn hàng</a>
+                        <a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
+                    </div>
+                </div>
             <?php else: ?>
                 <a href="./login/"><i class="fa fa-user"></i>Login</a>
             <?php endif; ?>
@@ -43,15 +50,19 @@ function countTable($table)
             <li>
                 <a href="./" class="<?= ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a>
             </li>
-
+            <?php if ($_SESSION['loggedin']): ?>
             <li>
-                <a href="./heart.php" class="<?= ($currentPage == 'heart.php') ? 'active' : ''; ?>">Wish
-                    List</a>
+                <a href="./profile.php" class="<?= ($currentPage == 'profile.php') ? 'active' : ''; ?>">Tài khoản</a>
             </li>
-
             <li>
-                <a href="./shoping-cart.php"
-                    class="<?= ($currentPage == 'shoping-cart.php') ? 'active' : ''; ?>">Cart</a>
+                <a href="./profile.php#orders" class="<?= ($currentPage == 'profile.php' && isset($_GET['tab']) && $_GET['tab'] == 'orders') ? 'active' : ''; ?>">Đơn hàng</a>
+            </li>
+            <?php endif; ?>
+            <li>
+                <a href="./heart.php" class="<?= ($currentPage == 'heart.php') ? 'active' : ''; ?>">Wish List</a>
+            </li>
+            <li>
+                <a href="./shoping-cart.php" class="<?= ($currentPage == 'shoping-cart.php') ? 'active' : ''; ?>">Cart</a>
             </li>
         </ul>
     </nav>
@@ -92,7 +103,14 @@ function countTable($table)
                         </div>
                         <div class="header__top__right__auth">
                             <?php if ($_SESSION['loggedin']): ?>
-                                <a href="#" onclick="logout()"><i class="fa fa-user"></i>Logout</a>
+                                <div class="header__top__right__auth__dropdown">
+                                    <a href="#"><i class="fa fa-user"></i> <?= htmlspecialchars($_SESSION['name']); ?> <i class="fa fa-angle-down"></i></a>
+                                    <div class="header__top__right__auth__dropdown__content">
+                                        <a href="./profile.php"><i class="fa fa-user-circle"></i> Tài khoản</a>
+                                        <a href="./profile.php#orders"><i class="fa fa-shopping-basket"></i> Đơn hàng</a>
+                                        <a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
+                                    </div>
+                                </div>
                             <?php else: ?>
                                 <a href="./login/"><i class="fa fa-user"></i>Login</a>
                             <?php endif; ?>
@@ -115,15 +133,19 @@ function countTable($table)
                         <li>
                             <a href="./" class="<?= ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a>
                         </li>
-
+                        <?php if ($_SESSION['loggedin']): ?>
                         <li>
-                            <a href="./heart.php" class="<?= ($currentPage == 'heart.php') ? 'active' : ''; ?>">Wish
-                                List</a>
+                            <a href="./profile.php" class="<?= ($currentPage == 'profile.php') ? 'active' : ''; ?>">Tài khoản</a>
                         </li>
-
                         <li>
-                            <a href="./shoping-cart.php"
-                                class="<?= ($currentPage == 'shoping-cart.php') ? 'active' : ''; ?>">Cart</a>
+                            <a href="./profile.php#orders" class="<?= ($currentPage == 'profile.php' && isset($_GET['tab']) && $_GET['tab'] == 'orders') ? 'active' : ''; ?>">Đơn hàng</a>
+                        </li>
+                        <?php endif; ?>
+                        <li>
+                            <a href="./heart.php" class="<?= ($currentPage == 'heart.php') ? 'active' : ''; ?>">Wish List</a>
+                        </li>
+                        <li>
+                            <a href="./shoping-cart.php" class="<?= ($currentPage == 'shoping-cart.php') ? 'active' : ''; ?>">Cart</a>
                         </li>
                     </ul>
                 </nav>
@@ -159,6 +181,52 @@ function countTable($table)
         color: #7fad39 !important;
         font-weight: bold !important;
     }
+    
+    /* Dropdown Styles */
+    .header__top__right__auth__dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .header__top__right__auth__dropdown__content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        border-radius: 5px;
+        right: 0;
+        top: 100%;
+        margin-top: 10px;
+    }
+    
+    .header__top__right__auth__dropdown:hover .header__top__right__auth__dropdown__content {
+        display: block;
+    }
+    
+    .header__top__right__auth__dropdown__content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s;
+    }
+    
+    .header__top__right__auth__dropdown__content a:hover {
+        background-color: #f1f1f1;
+        color: #7fad39;
+    }
+    
+    .header__top__right__auth__dropdown__content:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: 15px;
+        border-width: 0 10px 10px 10px;
+        border-style: solid;
+        border-color: transparent transparent #fff transparent;
+    }
 </style>
 
 <section class="hero hero-normal" style="margin-bottom: -50px;">
@@ -185,11 +253,11 @@ function countTable($table)
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
+                        <form action="search.php" method="GET">
                             <div class="hero__search__categories">
                                 All Categories
                             </div>
-                            <input type="text" placeholder="What do you need?">
+                            <input type="text" name="query" placeholder="Tìm kiếm sản phẩm..." required>
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>

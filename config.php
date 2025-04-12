@@ -256,17 +256,8 @@ class Database
         return $wishes;
     }
 
-    public function lastInsertId($table, $data)
+    public function lastInsertId()
     {
-        $keys = implode(', ', array_keys($data));
-        $values = "'" . implode("', '", array_values($data)) . "'";
-        $sql = "INSERT INTO $table ($keys) VALUES ($values)";
-        $insert_result = $this->executeQuery($sql);
-
-        if ($insert_result) {
-            return $this->conn->insert_id;
-        } else {
-            return false;
-        }
+        return $this->conn->insert_id;
     }
 }
